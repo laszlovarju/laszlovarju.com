@@ -236,10 +236,50 @@
   document.getElementById('kinaiszoveg').style.display = isSimplifiedChinese ? 'block' : 'none';
   document.getElementById('angolszoveg').style.display = (isJapanese || isHungarian || isSimplifiedChinese) ? 'none' : 'block';  
 </script>
+
+<script>
+const BIN_ID = "69586c51d0ea881f40509926";
+const API_KEY = "IDE_AZ_API_KULCSOD";
+const URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+
+const lang = (navigator.language || "unknown").split("-")[0];
+
+fetch(URL, {
+  headers: {
+    "X-Master-Key": API_KEY
+  }
+})
+.then(res => res.json())
+.then(data => {
+  const stats = data.record;
+
+  stats[lang] = (stats[lang] || 0) + 1;
+
+  return fetch(URL, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Master-Key": API_KEY
+    },
+    body: JSON.stringify(stats)
+  }).then(() => stats);
+})
+.then(stats => {
+  const tbody = document.getElementById("stats");
+  tbody.innerHTML = "";
+
+  Object.entries(stats).forEach(([language, count]) => {
+    tbody.innerHTML += `<tr><td>${language}</td><td>${count}</td></tr>`;
+  });
+})
+.catch(err => console.error("Hiba:", err));
+</script>
+
 	
 	
 </body>
 </html>	
+
 
 
 
