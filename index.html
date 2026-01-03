@@ -222,10 +222,85 @@
         </p>
     </div>
 
-		
+<!-- Táblázat a statisztikának (csak akkor jelenik meg, ha betöltődött) -->
+<table id="statsBody"></table>
+
+<script>
+(function() {
+    // 1. ADATOK ÉS NYELV BEÁLLÍTÁSA
+    const BIN_ID = '69586c51d0ea881f40509926';
+    const API_KEY = '$2a$10$b8SeJkT4zJr9ZIAlRxxP.eEB/zBvTlR..UmTotIvao8By/8oed6Km';
+    const URL = `api.jsonbin.io{BIN_ID}`;
+
+    const rawLang = navigator.language || navigator.userLanguage || "en";
+    const userLang = rawLang.split('-')[0].toLowerCase();
+
+    // 2. TARTALOM MEGJELENÍTÉSE NYELV ALAPJÁN
+    const sections = { 'hu': 'magyarszoveg', 'ja': 'japanszoveg', 'zh': 'kinaiszoveg', 'en': 'angolszoveg' };
+    const players = { 'hu': 'youtube-player', 'ja': 'bilibili-player', 'zh': 'bilibili-player', 'en': 'youtube-player' };
+
+    const show = (id) => { if(document.getElementById(id)) document.getElementById(id).style.display = 'block'; };
+    
+    show(sections[userLang] || sections['en']);
+    show(players[userLang] || players['en']);
+
+    // 3. STATISZTIKA KEZELÉSE (FETCH)
+    const headers = {
+        'Content-Type': 'application/json',
+        'X-Master-Key': API_KEY
+    };
+
+    // Adatok lekérése
+    fetch(`${URL}/latest?meta=false`, { headers })
+    .then(response => {
+        if (!response.ok) throw new Error();
+        return response.json();
+    })
+    .then(stats => {
+        // Számláló növelése
+        stats[userLang] = (stats[userLang] || 0) + 1;
+
+        // Adatok mentése
+        return fetch(URL, {
+            method: 'PUT',
+            headers: headers,
+            body: JSON.stringify(stats)
+        });
+    })
+    .then(response => response.json())
+    .then(data => {
+        const record = data.record || data;
+        const tbody = document.getElementById('statsBody');
+        if (!tbody) return;
+
+        // Táblázat ürítése és feltöltése
+        tbody.innerHTML = '';
+        const total = Object.values(record).reduce((a, b) => a + b, 0);
+
+        Object.keys(record)
+            .sort((a, b) => record[b] - record[a])
+            .forEach(key => {
+                const count = record[key];
+                const percent = ((count / total) * 100).toFixed(1);
+                const row = `<tr>
+                    <td style="padding-right:10px;">${key.toUpperCase()}</td>
+                    <td style="padding-right:10px;">${count}</td>
+                    <td>${percent}%</td>
+                </tr>`;
+                tbody.innerHTML += row;
+            });
+    })
+    .catch(err => {
+        console.warn("Statisztika nem elérhető (CORS vagy hálózati hiba).");
+    });
+})();
+</script>
+
+	
 	
 </body>
 </html>	
+
 
 
 
