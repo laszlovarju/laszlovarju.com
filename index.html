@@ -238,55 +238,6 @@
 </script>
 	
 	
-	<table id="statsBody" style="opacity: 0.55; font-size: 12px; margin: 20px auto;"></table>
-
-<script>
-(function() {
-    // Csak a szükséges adatok
-    var u = "api.jsonbin.io";
-    var k = "$2a$10$b8SeJkT4zJr9ZIAlRxxP.eEB/zBvTlR..UmTotIvao8By/8oed6Km";
-    var l = (navigator.language || "en").split('-')[0].toLowerCase();
-
-    // 1. Lekérés
-    fetch(u + "/latest?meta=false", {
-        headers: { "X-Master-Key": k }
-    })
-    .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
-    .then(function(stats) {
-        // Számlálás
-        stats[l] = (stats[l] || 0) + 1;
-        // 2. Mentés
-        return fetch(u, {
-            method: 'PUT',
-            headers: { "X-Master-Key": k, "Content-Type": "application/json" },
-            body: JSON.stringify(stats)
-        });
-    })
-    .then(function(r) { return r.json(); })
-    .then(function(res) {
-        var d = res.record || res;
-        var b = document.getElementById('statsBody');
-        if (!b) return;
-
-        var t = 0;
-        for (var n in d) t += d[n];
-        
-        // Táblázat generálása
-        var html = "";
-        Object.keys(d).sort(function(x,y){return d[y]-d[x]}).forEach(function(key) {
-            var p = ((d[key]/t)*100).toFixed(1);
-            html += "<tr><td style='padding:0 10px'>" + key.toUpperCase() + "</td><td style='padding:0 10px'>" + d[key] + "</td><td>" + p + "%</td></tr>";
-        });
-        b.innerHTML = html;
-    })
-    .catch(function(e) { 
-        console.log("Statisztika hiba - Online módban működni fog."); 
-    });
-})();
-</script>
-
-	
-	
 </body>
 </html>	
 
