@@ -82,7 +82,14 @@
 	
 </head>
 <body>
+
+    <div id="nyugat" style="display: none;">
     <img src="h.png" alt="Laszlo Varju logo" style="display:block; margin:26px auto 20px; max-width:400px; opacity:0.55;">
+    </div>
+
+    <div id="kelet" style="display: none;">
+    <img src="v.png" alt="Laszlo Varju logo" style="display:block; margin:26px auto 20px; max-width:400px; opacity:0.55;">
+    </div>	
 
     <iframe id="youtube-player"
         src="https://www.youtube-nocookie.com/embed/WIJzSZTz5yM?rel=0&playlist=WIJzSZTz5yM&start=522&list=PLhJl5jzznAFzG_E0Zd2GLfi5SLJoyQjbj"
@@ -217,9 +224,9 @@
     </div>
 
     <div class="ujsagszoveg">
-        <p>
+    <p>
 	Made by Laszlo Varju. All rights reserved.
-        </p>
+    </p>
     </div>
 
 <script>
@@ -235,13 +242,16 @@
   document.getElementById('japanszoveg').style.display = isJapanese ? 'block' : 'none';
   document.getElementById('kinaiszoveg').style.display = isSimplifiedChinese ? 'block' : 'none';
   document.getElementById('angolszoveg').style.display = (isJapanese || isHungarian || isSimplifiedChinese) ? 'none' : 'block';  
+  document.getElementById('kelet').style.display = (isJapanese || isHungarian || isSimplifiedChinese) ? 'block' : 'none';
+  document.getElementById('nyugat').style.display = (isJapanese || isHungarian || isSimplifiedChinese) ? 'none' : 'block';  
+
+
 </script>
 
 	
 	
 </body>
 </html>	
-
 
 
 
