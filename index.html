@@ -222,6 +222,53 @@
         </p>
     </div>
 
+<table id="statsBody">
+    <tr><td>Betöltés...</td></tr>
+</table>
+
+<script>
+const fullLang = navigator.language || navigator.userLanguage || "unknown";
+const lang = fullLang.split('-')[0].toLowerCase();
+
+fetch('count-lang.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ language: lang })
+})
+.then(() => {
+    fetch('get-stats.php')
+    .then(response => response.json())
+    .then(data => {
+        const tbody = document.getElementById('statsBody');
+        tbody.innerHTML = '';
+
+        const total = Object.values(data.stats).reduce((a, b) => a + b, 0);
+
+        Object.keys(data.stats)
+            .sort((a, b) => data.stats[b] - data.stats[a])
+            .forEach(code => {
+                const count = data.stats[code];
+                const percent = total > 0 ? ((count / total) * 100).toFixed(1) : 0;
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${code.toUpperCase()}</td>
+                    <td>${count}</td>
+                    <td>${percent}%</td>
+                `;
+                tbody.appendChild(row);
+            });
+
+        if (total === 0) {
+            tbody.innerHTML = '<tr><td>Még nincs adat</td></tr>';
+        }
+    })
+    .catch(() => {
+        document.getElementById('statsBody').innerHTML = '<tr><td>Hiba a betöltéskor</td></tr>';
+    });
+});
+</script>
+	
 <script>
   const langFull = navigator.language || navigator.userLanguage || '';
   const lang = langFull.split('-')[0].toLowerCase();
@@ -241,6 +288,7 @@
 	
 </body>
 </html>	
+
 
 
 
