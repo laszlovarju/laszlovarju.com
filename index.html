@@ -16,7 +16,7 @@
         body { background-color: #202432; 
 		font-family: Consolas, sans-serif; 
 		color: #ffffff; }
-        iframe { width: 98%; max-width: 650px; 
+        iframe { width: 94%; max-width: 650px; 
 		aspect-ratio: 16/9;
 		margin: 15px auto; 
 		display: block; 
@@ -44,7 +44,7 @@
 		display: flex; 
 		justify-content: center; 
 		gap: 20px; 
-		flex-wrap: nowrap; 
+		flex-wrap: wrap; 
 		align-items: center; 
 		margin: 25px auto 2px auto; }	
 		
@@ -80,10 +80,11 @@
 		font-size: 13px; 
 		opacity: 0.55; }			
 
-		@media (max-width: 600px){
+		@media (max-width: 480px){
         .szoveg{font-size: 14px; }
-		.ikon img {height: 34px;  }
-		.ikonszoveg {font-size: 9px;}
+		.ikon{max-width: 300px; 
+		gap: 28px;
+		margin: 25px auto 2px auto; }
 		.ujsag img {height: 111px;}
 		.ujsagszoveg {font-size: 11px;}
 		}	
@@ -141,7 +142,7 @@
 		</a><div class="ikonszoveg">cassette</div></div>
 		
         <div><a href="mailto:laszlo.varju@outlook.com" target="_blank" rel="noopener noreferrer" 
-		title="email"><img src="e.png" alt="tech rider, press pack">
+		title="email"><img src="e.png" alt="e-mail">
 		</a><div class="ikonszoveg">e-mail</div></div>
 		
         <div><a href="https://drive.google.com/drive/folders/1RGNyAPRAYCuVYfOiK5936QlOobSavqP-?usp=drive_link" target="_blank" rel="noopener noreferrer" 
