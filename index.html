@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laszlo Varju | Live Acid Techno</title>
     <meta name="description" content="Laszlo Varju: live acid techno music performance videos with analogue synths. Élő elektronikus zene analóg szintetizátorokkal. ライブテクノ音楽家。 电子音乐和现场表演。">
     <meta property="og:type" content="website">
@@ -15,9 +16,9 @@
         body { background-color: #202432; 
 		font-family: Consolas, sans-serif; 
 		color: #ffffff; }
-        iframe { width: 90%; max-width: 650px; 
+        iframe { width: 98%; max-width: 650px; 
 		aspect-ratio: 16/9;
-		margin: 20px auto; 
+		margin: 15px auto; 
 		display: block; 
 		border: none; }
 
@@ -39,20 +40,21 @@
 		font-size: 18px; 
 		opacity: 0.55; }
 		
-        .ikon { display: flex; 
+        .ikon { 
+		display: flex; 
 		justify-content: center; 
 		gap: 20px; 
-		flex-wrap: wrap; 
+		flex-wrap: nowrap; 
 		align-items: center; 
-		margin: 30px auto 2px auto; }
+		margin: 25px auto 2px auto; }	
 		
         .ikon img { height: 42px; 
 		width: auto; object-fit: contain; 
 		opacity: 0.55; }
-		
+				
         .ikonszoveg { white-space: pre; 
 		max-width: 64ch; 
-		margin: 3px auto 24px auto; 
+		margin: 3px auto 20px auto; 
 		text-align: center; 
 		font-size: 10px; 
 		opacity: 0.55; }
@@ -76,7 +78,16 @@
 		margin: 3px auto 24px auto; 
 		text-align: center; 
 		font-size: 13px; 
-		opacity: 0.55; }				
+		opacity: 0.55; }			
+
+		@media (max-width: 600px){
+        .szoveg{font-size: 14px; }
+		.ikon img {height: 34px;  }
+		.ikonszoveg {font-size: 9px;}
+		.ujsag img {height: 111px;}
+		.ujsagszoveg {font-size: 11px;}
+		}	
+		
     </style>
 	
 	<script type="application/ld+json">
@@ -260,10 +271,6 @@
 		
 </body>
 </html>	
-
-
-
-
 
 
 
