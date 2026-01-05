@@ -5,32 +5,51 @@
 	<link rel="shortcut icon" type="image/png" href="303.png">
     <title>contact</title>
     <style>
-        body { 
-		background-color: #202432; 
-		font-family: Consolas, sans-serif; 
-		color: #ffffff;
-		margin: 15px auto; 
-		}
-		.szoveg {
-		text-align: center;
-		font-size: 18px;
-		opacity: 0.42;
-		}		
+    body { 
+	background-color: #202432; 
+	font-family: Consolas, sans-serif; 
+	color: #ffffff;
+	margin: 15px auto; 
+	}
+	.szoveg {
+	text-align: center;
+	font-size: 18px;
+	opacity: 0.42;
+	}		
     </style>
 </head>
 <body>
    <a href="index.html">
-    <img src="h.png" alt="Laszlo Varju logo" style="display:block; margin:26px auto; max-width:400px; opacity:0.42;">
+   <img src="h.png" alt="Laszlo Varju logo" style="display:block; margin:26px auto; max-width:400px; opacity:0.42;">
    </a> 
    <br>
    <br>
    <br>
+   <div id="angol" style="display: none;">
    <img src="c.png" alt="contact" style="display:block; margin:20px auto; max-width:400px; opacity:0.42;">
- 
-    <div class="szoveg">
-        ...or write private message on Instagram.
+   </div>
+   <div id="magyar" style="display: none;">
+   <img src="cm.png" alt="contact" style="display:block; margin:20px auto; max-width:400px; opacity:0.42;">
+   </div>
+		
+    <div class="szoveg" id="angolszoveg" lang="en" style="display: none;">
+    ...or write private message on Instagram.
     </div> 
+	<div class="szoveg" id="magyarszoveg" lang="hu" style="display: none;">
+    ...vagy írj üzenetet Instagrammon.
+    </div> 	
+	
+<script>
+  const langFull = navigator.language || navigator.userLanguage || '';
+  const lang = langFull.split('-')[0].toLowerCase();
+  const region = langFull.split('-')[1] ? langFull.split('-')[1].toUpperCase() : '';
+  const isHungarian = lang === 'hu';
+  document.getElementById('angolszoveg').style.display = isHungarian ? 'none' : 'block';  
+  document.getElementById('magyarszoveg').style.display = isHungarian ? 'block' : 'none';
+  document.getElementById('angol').style.display = isHungarian ? 'none' : 'block';  
+  document.getElementById('magyar').style.display = isHungarian ? 'block' : 'none';
+</script>
+
+	
 </body>
-
 </html>
-
