@@ -14,9 +14,6 @@
         else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
             window.location.replace("instagram://user?username=laszlovarjutechno");
         }
-
-        // Ha mobil, várunk 1.6 mp-et (hogy legyen idő megnyílni az appnak)
-        // Ha NEM mobil (asztali gép), akkor azonnal küldjük a weboldalra
         setTimeout(function() {
             window.location.replace("https://laszlovarju.com");
         }, isMobile ? 1600 : 0);
