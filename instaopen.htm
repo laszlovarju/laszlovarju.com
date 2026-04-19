@@ -6,21 +6,24 @@
 <body style="background: #000;">
     <script>
         (function() {
-            var user = "laszlovarjutechno"; 
-            var isAndroid = /android/i.test(navigator.userAgent);
+            var user = "laszlovarjutechno";
             var start = Date.now();
+            var isAndroid = /android/i.test(navigator.userAgent);
 
-            // Megpróbálja megnyitni az appot (Android Intent vagy iOS séma)
-            window.location.href = isAndroid 
-                ? "intent://://instagram.com" + user + "/#Intent;package=com.instagram.android;scheme=https;end" 
-                : "instagram://user?username=" + user;
+            if (isAndroid) {
+                // Erősebb Android Intent formátum
+                window.location.href = "intent://://instagram.com" + user + "/#Intent;package=com.instagram.android;scheme=https;end";
+            } else {
+                // iOS közvetlen hívás
+                window.location.href = "instagram://user?username=" + user;
+            }
 
-            // Ha 1.5 mp után nem nyílt meg az app, megy a sima webes profilra
+            // Ha 2 másodperc után még mindig itt van, akkor böngésző
             setTimeout(function() {
-                if (Date.now() - start < 2000) {
-                    window.location.href = "https://://instagram.com" + user + "/";
+                if (Date.now() - start < 2500) {
+                    window.location.href = "https://instagram.com" + user + "/";
                 }
-            }, 1500);
+            }, 2000);
         })();
     </script>
 </body>
