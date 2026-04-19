@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="background: #000;">
+    <script>
+        (function() {
+            var user = "laszlovarjutechno"; 
+            var isAndroid = /android/i.test(navigator.userAgent);
+            var start = Date.now();
+
+            // Megpróbálja megnyitni az appot (Android Intent vagy iOS séma)
+            window.location.href = isAndroid 
+                ? "intent://://instagram.com" + user + "/#Intent;package=com.instagram.android;scheme=https;end" 
+                : "instagram://user?username=" + user;
+
+            // Ha 1.5 mp után nem nyílt meg az app, megy a sima webes profilra
+            setTimeout(function() {
+                if (Date.now() - start < 2000) {
+                    window.location.href = "https://://instagram.com" + user + "/";
+                }
+            }, 1500);
+        })();
+    </script>
+</body>
+</html>
