@@ -11,10 +11,12 @@
 </head>
 <body>
 <script>
+  function openApp() {
+    var intentUrl = "intent://://youtube.com/@LaszloVarjuTechno?sub_confirmation=1;";
+    window.location.replace(intentUrl);
+  }
   window.onload = function() {
-    setTimeout(function() {
-      window.location.href = "intent://://youtube.com/channel/UCZgR2lQgF7QHHKUoVzXBDlw;";
-    }, 404);
+    setTimeout(openApp, 404);
   };
 </script>
 3
