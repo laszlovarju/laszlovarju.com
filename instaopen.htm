@@ -1,13 +1,22 @@
-html
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"></head>
+<head>
+    <meta charset="UTF-8">
+</head>
 <body style="background: #000;">
+
     <script>
-        window.location.replace("intent://://instagram.com/laszlovarjutechno");
-		        setTimeout(function() {
+        if (/android/i.test(navigator.userAgent)) {
+            window.location.replace("intent://www.instagram.com/laszlovarjutechno#Intent;scheme=https;package=com.instagram.android;end");
+        } 
+        else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+            window.location.replace("instagram://user?username=laszlovarjutechno");
+        }
+
+        setTimeout(function() {
             window.location.replace("https://laszlovarju.com");
-        }, 1500);
+        }, 1600);
     </script>
+
 </body>
 </html>
