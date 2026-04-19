@@ -6,16 +6,20 @@
 <body style="background: #000;">
 
     <script>
+        var isMobile = /android|iPad|iPhone|iPod/i.test(navigator.userAgent);
+
         if (/android/i.test(navigator.userAgent)) {
-            window.location.replace("intent://www.instagram.com/laszlovarjutechno#Intent;scheme=https;package=com.instagram.android;end");
+            window.location.replace("intent://://instagram.com");
         } 
         else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
             window.location.replace("instagram://user?username=laszlovarjutechno");
         }
 
+        // Ha mobil, várunk 1.6 mp-et (hogy legyen idő megnyílni az appnak)
+        // Ha NEM mobil (asztali gép), akkor azonnal küldjük a weboldalra
         setTimeout(function() {
             window.location.replace("https://laszlovarju.com");
-        }, 1600);
+        }, isMobile ? 1600 : 0);
     </script>
 
 </body>
