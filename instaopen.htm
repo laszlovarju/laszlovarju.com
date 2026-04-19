@@ -6,17 +6,16 @@
 <body style="background: #000;">
 
     <script>
-        var isMobile = /android|iPad|iPhone|iPod/i.test(navigator.userAgent);
-
         if (/android/i.test(navigator.userAgent)) {
-            window.location.replace("intent://instagram.com/laszlovarjutechno");
+            window.location.replace("intent://www.instagram.com/laszlovarjutechno#Intent;scheme=https;package=com.instagram.android;end");
         } 
         else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
             window.location.replace("instagram://user?username=laszlovarjutechno");
         }
-        setTimeout(function() {
+		setTimeout(function() {
+        if (!document.hidden) {
             window.location.replace("https://laszlovarju.com");
-        }, isMobile ? 1600 : 0);
+        }, 2222);
     </script>
 
 </body>
