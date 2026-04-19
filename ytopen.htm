@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -6,9 +7,15 @@
 </head>
 <body>
     <script>
-        (function() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        if (/android/i.test(userAgent)) {
+            window.location.replace("intent://youtube.com/@LaszloVarjuTechno");
+        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
             window.location.replace("youtube://www.youtube.com/@LaszloVarjuTechno");
-        })();
+        } else {
+            window.location.replace("http://youtube.com/@LaszloVarjuTechno");
+        }
     </script>
 </body>
 </html>
