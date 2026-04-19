@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
+    <title>open Laszlo Varju insta</title>
+    <meta http-equiv="refresh" content="2;url=https://laszlovarju.com">
 </head>
-<body style="background: #000;">
-
+<body>
     <script>
-        if (/android/i.test(navigator.userAgent)) {
-            window.location.replace("intent://www.instagram.com/laszlovarjutechno#Intent;scheme=https;package=com.instagram.android;end");
-        } 
-        else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-            window.location.replace("instagram://user?username=laszlovarjutechno");
-        }
-		setTimeout(function() {
-        if (!document.hidden) {
-            window.location.replace("https://laszlovarju.com");
-        }, 2222);
-    </script>
+        (function() {
+            var appUri = "instagram://user?username=laszlovarjutechno";
+            var webUri = "https://laszlovarju.com";
 
+            window.location.replace(appUri);
+
+            setTimeout(function() {
+                window.location.replace(webUri);
+            }, 1213);
+        })();
+    </script>
 </body>
 </html>
