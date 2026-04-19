@@ -11,17 +11,17 @@
             var isAndroid = /android/i.test(navigator.userAgent);
 
             if (isAndroid) {
-                // Erősebb Android Intent formátum
+                // Javított Android Intent
                 window.location.href = "intent://://instagram.com" + user + "/#Intent;package=com.instagram.android;scheme=https;end";
             } else {
-                // iOS közvetlen hívás
+                // Javított iOS séma
                 window.location.href = "instagram://user?username=" + user;
             }
 
-            // Ha 2 másodperc után még mindig itt van, akkor böngésző
+            // Ha nem ugrik az appba, megy a webre (itt is javítva a / jel)
             setTimeout(function() {
                 if (Date.now() - start < 2500) {
-                    window.location.href = "https://instagram.com" + user + "/";
+                    window.location.href = "https://://instagram.com" + user + "/";
                 }
             }, 2000);
         })();
