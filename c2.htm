@@ -62,6 +62,39 @@
 	<div class="szoveg" id="magyarszoveg" lang="hu" style="display: none;">
     ...vagy írj üzenetet
 	<a href="https://www.instagram.com/laszlovarjutechno" title="📸" class="link">Instagrammon</a>!
+	<br>
+	<br>	
+	<br>	
+	<br>	
+<script>
+  const langFull = navigator.language || navigator.userLanguage || '';
+  const lang = langFull.split('-')[0].toLowerCase();
+  const region = langFull.split('-')[1] ? langFull.split('-')[1].toUpperCase() : '';
+  const isHungarian = lang === 'hu';
+  document.getElementById('angolszoveg').style.display = isHungarian ? 'none' : 'block';  
+  document.getElementById('magyarszoveg').style.display = isHungarian ? 'block' : 'none';
+  document.getElementById('angol').style.display = isHungarian ? 'none' : 'block';  
+  document.getElementById('magyar').style.display = isHungarian ? 'block' : 'none';
+</script>
+
+<script type="text/javascript">
+<!--
+	function ll_popup(){
+		window.open('','ll_msg', 'width=400,height=150,resizable=0');
+	}
+//-->
+</script>
+
+<form name="LevListaForm" method="post" action="https://lev-lista.hu/rform"
+	target="ll_msg">
+	<p>Koncert, videó hírlevél: 
+	<input type="hidden" name="listname" value="varjulaszlo">
+	<input type="text" name="email">
+	<input type="submit" value="Feliratkozás" name="b_sub" onFocus="blur()"
+		onclick="ll_popup()">
+	<input type="submit" value="Leiratkozás" name="b_unsub" onFocus="blur()"
+		onclick="ll_popup()">
+</form>
 	</div> 	
 	
 <script>
